@@ -22,8 +22,8 @@ TEST_PATH = test
 DOCUMENTATION_PATH = docs
 
 # Executable file name 
-BIN_NAME = rc4_simulator
-TEST_NAME = rc4_test
+BIN_NAME = chacha20
+TEST_NAME = chacha20_test
 
 # File extentions
 SRC_EXT = cpp

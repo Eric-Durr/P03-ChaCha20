@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <regex>
-#include "../include/rc4_functions.h"
+#include "../include/chacha20.h"
 
 /* Text formart check function: throug a regular expresion validates the message to cipher */
 bool text_check(const std::string &input_str);

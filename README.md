@@ -1,13 +1,13 @@
 # Seguridad en Sistemas Informáticos - Práctica 1
 
-> CIFRADO DE VIGENERE
+> CIFRADO DE FLUJO CHACHA 2
 
     Autor: Eric Dürr sierra - alu0101027005
            eric.durr.20@ull.edu.es
 
     Escuela Superior de Ingeniería y Tecnología - ULL
 
-    03-MAR-2021
+    09-MAR-2021
 
 ### **Compilación del ejecutable**
 
@@ -20,7 +20,7 @@ $ make
 **Ejecutar el programa para lanzar el menú de opciones**
 
 ```bash
-$ ./rc4_simulator
+$ ./chacha20
 ```
 
 ### **Lanzamiento de los tests**
@@ -38,7 +38,7 @@ Se compila y ejecuta el conjunto de tests para luego ejecutarlos, de suceder sat
 También se puede ejecutar un despliegue detallado de los tests si ya se ha lanzado el comando anterior:
 
 ```bash
-$ ./rc4_test -s
+$ ./chacha20_test -s
 ```
 
 ## Licencia

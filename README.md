@@ -1,6 +1,6 @@
-# Seguridad en Sistemas Informáticos - Práctica 1
+# Seguridad en Sistemas Informáticos - Práctica 3
 
-> CIFRADO DE FLUJO CHACHA 2
+> CIFRADO DE FLUJO CHACHA20
 
     Autor: Eric Dürr sierra - alu0101027005
            eric.durr.20@ull.edu.es

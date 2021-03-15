@@ -3,53 +3,77 @@
 #include <sstream>
 #include <iostream>
 
-void initializeRC4(std::vector<int> &s,
-                   const std::vector<int> &seed)
+uint32_t string_to_uint32(std::string word_in_string)
 {
-  for (int i = 0; i < 256; i++)
-  {
-    s.push_back(i);
-  }
-  int j = 0;
-  for (int i = 0; i < 256; i++)
-  {
-    j = (j + s[i] + seed[i % seed.size()]) % 256;
-    std::swap(s[i], s[j]);
-  }
+  return static_cast<uint32_t>(std::stoul(word_in_string));
+}
+std::string uint32_to_string(uint32_t word)
+{
+  return std::to_string(word);
 }
 
-std::vector<int> generateCipheringSecuence(std::vector<int> &o,
-                                           std::vector<int> &s)
+std::vector<uint32_t> translate_strings(std::vector<std::string> strings)
 {
-  std::vector<int> t;
-  int n = 0;
-  int m = 0;
-  for (unsigned int i = 0; i < o.size(); i++)
-  {
-    n = (n + 1) % 256;
-    m = (m + s[n]) % 256;
-    std::swap(s[n], s[m]);
-    int rand = (s[n] + s[m]) % 256;
-    t.push_back(s[rand] ^ o[i]);
-  }
-  return t;
+  std::vector<uint32_t> words;
+  for (auto element : strings)
+    words.push_back(string_to_uint32(element));
+  return words;
 }
 
-std::string secuenceToString(const std::vector<int> &s)
+std::vector<std::string> translate_words(std::vector<uint32_t> words)
+{
+  std::vector<std::string> strings;
+  for (auto element : words)
+    strings.push_back(uint32_to_string(element));
+  return strings;
+}
+
+std::string uint32_to_hexstr(uint32_t word)
+{
+  std::stringstream result;
+  result << std::hex << word;
+  return result.str();
+}
+
+std::vector<std::string> hex_strings(std::vector<uint32_t> words)
+{
+  std::vector<std::string> result;
+  for (auto element : words)
+    result.push_back(uint32_to_hexstr(element));
+  return result;
+}
+
+std::string words_to_string(std::vector<uint32_t> words)
 {
   std::string output = "[\n";
-  int line = 0;
-  for (auto i : s)
+  int i = 0;
+  for (auto word : words)
   {
-    if (line == 16)
+    output += uint32_to_string(word) + ", ";
+    if ((i % 4) == 0)
     {
       output += "\n";
-      line = 0;
     }
-    output += std::to_string(i) + " ";
-
-    line++;
+    i++;
   }
-  output += "\n]";
+  output += "]\n";
+  return output;
+}
+
+std::string strings_to_string(std::vector<std::string> words)
+{
+  std::string output = "[\n";
+  int i = 0;
+  for (auto word : words)
+  {
+    output += word + ", ";
+
+    i++;
+    if ((i % 4) == 0)
+    {
+      output += "\n";
+    }
+  }
+  output += "]\n";
   return output;
 }

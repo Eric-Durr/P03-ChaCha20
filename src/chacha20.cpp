@@ -11,45 +11,22 @@
 #include <iostream>
 #include <regex>
 #include "../include/chacha20.h"
-
-/* Text formart check function: throug a regular expresion validates the message to cipher */
-bool text_check(const std::string &input_str);
-
-int main(void)
+int main()
 {
-    std::string message, keyword;
-    int op;
 
-    std::string temp_key;
-    bool ciphered_status = false;
+    std::vector<std::string> in = {
+        "61707865", "3320646e", "79622d32", "6b206574", // palabras
+        "00010203", "04050607", "08090a0b", "0c0d0e0f", // clave
+        "10111213", "14151617", "18191a1b", "1c1d1e1f", // clave
+        "01000000", "00000009", "0000004a", "00000000"  //contador y nonce
+    };
+    std::vector<std::string> out;
 
-    while (1)
-    {
-        op = 7;
-        std::cout << "\n\n--MENÚ PARA EL CIFRADO DE VIGENERE--\n\n";
-        std::cout << "\t0) Salir del programa\n";
-        std::cout << "Introducir opción: ";
-        std::cin >> op;
-        std::cout << "\n\n";
+    std::cout << "\nEstado previo al generador = " << std::endl;
+    std::cout << strings_to_string(in) << "\n";
+    in = reverse_set(in, BASE, OFFSET);
+    out = chacha_block(out, in, ROUNDS);
 
-        if (op == 0)
-        {
-            break;
-        }
-
-        switch (op)
-        {
-        default:
-            std::cout << "Opción no contemplada para el número " << op
-                      << " vuelva a intentarlo\n";
-            break;
-        }
-
-        std::cout << "\n\t\tPulse enter para continuar...";
-        getchar();
-        getchar();
-        system("clear");
-    }
-
-    return 0;
+    std::cout << "\nEstado de salida del generador = " << std::endl;
+    std::cout << strings_to_string(out) << "\n";
 }

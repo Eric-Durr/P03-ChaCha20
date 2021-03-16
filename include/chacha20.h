@@ -13,7 +13,7 @@ uint32_t string_to_uint32(std::string word_in_string)
 }
 std::string uint32_to_string(uint32_t word)
 {
-  return std::to_string(word);
+  return std::to_string(static_cast<int>(word));
 }
 
 std::vector<uint32_t> translate_strings(std::vector<std::string> strings)
@@ -106,7 +106,7 @@ std::vector<std::string> reverse_set(std::vector<std::string> input, int base, i
   return input;
 }
 
-uint32_t ROTL(uint32_t word, uint32_t n)
+uint32_t ROTL(uint32_t word, int n)
 {
   return ((word << n) | (word >> (32 - n)));
 }

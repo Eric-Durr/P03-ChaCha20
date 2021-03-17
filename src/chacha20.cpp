@@ -6,6 +6,8 @@
  * Modified: 01/03/2021
  * 
  * 
+ * 
+ * 
  */
 
 #include <iostream>
@@ -15,17 +17,20 @@ int main()
 {
 
     std::vector<std::string> in = {
-        "61707865", "3320646e", "79622d32", "6b206574", // palabras
-        "00010203", "04050607", "08090a0b", "0c0d0e0f", // clave
-        "10111213", "14151617", "18191a1b", "1c1d1e1f", // clave
-        "01000000", "00000009", "0000004a", "00000000"  //contador y nonce
-    };
+        // 128b Word
+        "61707865", "3320646e", "79622d32", "6b206574",
+        // 256 Key
+        "0e99a397", "3c53eb1b", "e2426bad", "2f312d24",
+        "d9c2762b", "535e14d7", "8e1775a9", "453a68a5",
+        // 32b Counter and 96b nonce
+        "01000000", "b69edeac", "73ee4405", "d3fa9a8e"};
+
     std::vector<std::string> out;
 
     std::cout << "\nEstado previo al generador = " << std::endl;
     std::cout << strings_to_string(in) << "\n";
     in = reverse_set(in, BASE, OFFSET);
-    out = chacha_block(out, in, ROUNDS);
+    out = chacha_block(out, in, ROUNDS, true);
 
     std::cout << "\nEstado de salida del generador = " << std::endl;
     std::cout << strings_to_string(out) << "\n";

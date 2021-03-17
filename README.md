@@ -29,12 +29,6 @@ $ ./chacha20
 $ make test
 ```
 
-Se compila y ejecuta el conjunto de tests para luego ejecutarlos, de suceder satisfactoriamente debe aparecer lo siguiente por terminal:
-
-```bash
-
-```
-
 También se puede ejecutar un despliegue detallado de los tests si ya se ha lanzado el comando anterior:
 
 ```bash

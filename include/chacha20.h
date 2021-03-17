@@ -179,6 +179,7 @@ std::vector<std::string> chacha_block(std::vector<std::string> out, std::vector<
     std::cout << "Estado final tras " << times << " iteraciones =\n";
     std::cout << strings_to_string(x) << "\n";
   }
+
   for (unsigned int i = 0; i < in.size(); i++)
   {
     uint32_t o = string_to_uint32(x[i]) + string_to_uint32(in[i]);
